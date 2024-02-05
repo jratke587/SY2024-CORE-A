@@ -9,7 +9,7 @@ import com.ctre.phoenix6.configs.MotorOutputConfigs;
 import com.ctre.phoenix6.configs.Slot0Configs;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.PositionVoltage;
-import com.ctre.phoenix6.controls.VelocityTorqueCurrentFOC;
+import com.ctre.phoenix6.controls.VelocityVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.AbsoluteSensorRangeValue;
@@ -30,7 +30,7 @@ public class SwerveModule {
   private TalonFX angleMotor;
   private TalonFX driveMotor;
 
-  private VelocityTorqueCurrentFOC driveMotorControl;
+  private VelocityVoltage driveMotorControl;
   private PositionVoltage angleMotorControl;
 
   private CANcoder angleEncoder;
@@ -51,7 +51,7 @@ public class SwerveModule {
     /* Drive Motor Config */
     driveMotor = new TalonFX(moduleConstants.driveMotorID);
     configDriveMotor();
-    driveMotorControl = new VelocityTorqueCurrentFOC(0);
+    driveMotorControl = new VelocityVoltage(0);
   }
 
   public void setDesiredState(SwerveModuleState desiredState, boolean isOpenLoop) {
